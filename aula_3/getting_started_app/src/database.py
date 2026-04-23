@@ -8,6 +8,10 @@ from src.config import get_settings
 # SQLAlchemy Base for all models
 Base = declarative_base()
 
+# Import models to register them with Base
+# This must be done after Base is created
+from src.models.database_models import UserModel, PixKeyModel, PixKeyAuditModel  # noqa: E402, F401
+
 # Sync engine/session (for migrations and simple operations)
 _engine: Optional[Engine] = None
 _SessionLocal: Optional[sessionmaker] = None
