@@ -5,6 +5,7 @@ from src.config import get_settings
 from src.logging_config import configure_logging
 from src.middleware import register_exception_handlers, logging_middleware
 from src.database import create_db_and_tables
+from src.api import router as pix_keys_router
 
 
 def create_app() -> FastAPI:
@@ -36,6 +37,9 @@ def create_app() -> FastAPI:
     
     # Register exception handlers
     register_exception_handlers(app)
+    
+    # Register API routers
+    app.include_router(pix_keys_router)
     
     # Create database tables on startup
     @app.on_event("startup")
