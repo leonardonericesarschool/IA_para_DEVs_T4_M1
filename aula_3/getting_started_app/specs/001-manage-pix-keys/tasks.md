@@ -23,12 +23,12 @@ description: "Task list for Pix Keys Management feature implementation"
 
 **Purpose**: Create project structure and configure development environment
 
-- [ ] T001 Create FastAPI project structure with src/ and tests/ directories
-- [ ] T002 [P] Initialize requirements.txt with FastAPI, SQLAlchemy, Pydantic, pytest, python-json-logger dependencies
-- [ ] T003 [P] Configure pytest.ini with coverage targets (80%+) in tests/
-- [ ] T004 [P] Create pyproject.toml with project metadata and tool configurations (Black, Ruff, mypy)
-- [ ] T005 Create .gitignore with Python, pytest, and IDE patterns
-- [ ] T006 Initialize git hooks configuration (.pre-commit-config.yaml) for linting and type checking
+- [x] T001 Create FastAPI project structure with src/ and tests/ directories
+- [x] T002 [P] Initialize requirements.txt with FastAPI, SQLAlchemy, Pydantic, pytest, python-json-logger dependencies
+- [x] T003 [P] Configure pytest.ini with coverage targets (80%+) in tests/
+- [x] T004 [P] Create pyproject.toml with project metadata and tool configurations (Black, Ruff, mypy)
+- [x] T005 Create .gitignore with Python, pytest, and IDE patterns
+- [x] T006 Initialize git hooks configuration (.pre-commit-config.yaml) for linting and type checking
 
 ---
 
@@ -40,36 +40,36 @@ description: "Task list for Pix Keys Management feature implementation"
 
 ### Database & ORM Setup
 
-- [ ] T007 Configure PostgreSQL connection management in src/config.py with dependency injection support
-- [ ] T008 [P] Create SQLAlchemy Base and database session factory in src/database.py
-- [ ] T009 [P] Create database migration framework structure (Alembic) in migrations/
+- [x] T007 Configure PostgreSQL connection management in src/config.py with dependency injection support
+- [x] T008 [P] Create SQLAlchemy Base and database session factory in src/database.py
+- [x] T009 [P] Create database migration framework structure (Alembic) in migrations/
 
 ### Domain Layer (Entities)
 
-- [ ] T010 [P] Create User entity reference in src/entities/user.py (mock for auth layer integration)
-- [ ] T011 [P] Create PixKeyType enum in src/entities/enums.py (CPF, EMAIL, PHONE, RANDOM)
-- [ ] T012 [P] Create PixKeyStatus enum in src/entities/enums.py (ACTIVE, INACTIVE)
-- [ ] T013 [P] Create PixKeyValidationStatus enum in src/entities/enums.py (PENDING, VALID, INVALID)
+- [x] T010 [P] Create User entity reference in src/entities/user.py (mock for auth layer integration)
+- [x] T011 [P] Create PixKeyType enum in src/entities/enums.py (CPF, EMAIL, PHONE, RANDOM)
+- [x] T012 [P] Create PixKeyStatus enum in src/entities/enums.py (ACTIVE, INACTIVE)
+- [x] T013 [P] Create PixKeyValidationStatus enum in src/entities/enums.py (PENDING, VALID, INVALID)
 
 ### Logging & Observability
 
-- [ ] T014 Create structured JSON logger setup in src/logging_config.py with request_id tracking
-- [ ] T015 [P] Create logging middleware for FastAPI in src/middleware/logging_middleware.py
+- [x] T014 Create structured JSON logger setup in src/logging_config.py with request_id tracking
+- [x] T015 [P] Create logging middleware for FastAPI in src/middleware/logging_middleware.py
 
 ### Error Handling & Validation
 
-- [ ] T016 [P] Create custom exception hierarchy in src/exceptions.py (DomainException, ApplicationException, PixKeyError, ValidationError)
-- [ ] T017 [P] Create exception handler middleware in src/middleware/exception_handler.py for HTTP response mapping
-- [ ] T018 Create validation utilities in src/utils/validators.py (CPF, email, phone validation functions)
+- [x] T016 [P] Create custom exception hierarchy in src/exceptions.py (DomainException, ApplicationException, PixKeyError, ValidationError)
+- [x] T017 [P] Create exception handler middleware in src/middleware/exception_handler.py for HTTP response mapping
+- [x] T018 Create validation utilities in src/utils/validators.py (CPF, email, phone validation functions)
 
 ### Repository Pattern (Abstraction Layer)
 
-- [ ] T019 Create abstract PixKeyRepository interface in src/repositories/pix_key_repository.py (ABC with CRUD methods)
-- [ ] T020 [P] Create PixKeyAuditRepository interface in src/repositories/pix_key_audit_repository.py (ABC for audit logs)
+- [x] T019 Create abstract PixKeyRepository interface in src/repositories/pix_key_repository.py (ABC with CRUD methods)
+- [x] T020 [P] Create PixKeyAuditRepository interface in src/repositories/pix_key_audit_repository.py (ABC for audit logs)
 
 ### Dependency Injection Container
 
-- [ ] T021 Create DI container setup in src/container.py with dependency registration (FastAPI Depends pattern or Dependency Injector library)
+- [x] T021 Create DI container setup in src/container.py with dependency registration (FastAPI Depends pattern or Dependency Injector library)
 
 **Checkpoint**: Foundation complete. All user stories can now be implemented independently.
 
@@ -85,7 +85,7 @@ description: "Task list for Pix Keys Management feature implementation"
 
 > **IMPORTANT: Write these tests FIRST, ensure they FAIL, then implement to make them PASS**
 
-- [ ] T022 [P] [US1] Unit test: PixKey entity validation rules in tests/unit/entities/test_pix_key_entity.py
+- [x] T022 [P] [US1] Unit test: PixKey entity validation rules in tests/unit/entities/test_pix_key_entity.py
   - Test CPF format validation (11 digits)
   - Test email format validation
   - Test phone format validation
@@ -119,45 +119,45 @@ description: "Task list for Pix Keys Management feature implementation"
 
 ### Entity Implementation for User Story 1
 
-- [ ] T026 [P] [US1] Implement PixKey entity in src/entities/pix_key.py with:
+- [x] T026 [P] [US1] Implement PixKey entity in src/entities/pix_key.py with:
   - Properties: key_id, user_id, key_type, key_value_hash, key_value_masked, status, alias, is_preferred, validation_status, created_at, updated_at
   - Methods: validate_format(), hash_key_value(), mask_key_value(), get_display_value()
   - Business rules: max 5 keys per user, duplicate prevention, status transitions
 
-- [ ] T027 [P] [US1] Implement PixKeyAudit entity in src/entities/pix_key_audit.py with:
+- [x] T027 [P] [US1] Implement PixKeyAudit entity in src/entities/pix_key_audit.py with:
   - Properties: audit_id, key_id, user_id, operation, timestamp, status, details
   - Events: REGISTERED, DEACTIVATED, REACTIVATED, DELETED, VALIDATION_FAILED
 
-- [ ] T028 [P] [US1] Create Pydantic schemas in src/models/pix_key_schemas.py:
+- [x] T028 [P] [US1] Create Pydantic schemas in src/models/pix_key_schemas.py:
   - RegisterPixKeyRequest (key_type, key_value, alias)
   - PixKeyResponse (key_id, key_type, key_value_masked, status, alias, validation_status, created_at, updated_at)
   - with field validators for CPF, email, phone formats
 
 ### Repository & Database Implementation for User Story 1
 
-- [ ] T029 [US1] Implement SQLAlchemy PixKey table in src/models/database_models.py with:
+- [x] T029 [US1] Implement SQLAlchemy PixKey table in src/models/database_models.py with:
   - Columns: key_id, user_id, key_type, key_value_hash, key_value_masked, status, alias, is_preferred, validation_status, validation_error, pix_network_id, created_at, updated_at, revalidated_at
   - Constraints: unique(user_id, key_value_hash), check(status), check(key_type), FK(user_id → users)
   - Indexes: (user_id, status), (user_id, key_type), key_value_hash
 
-- [ ] T030 [US1] Implement SQLAlchemy PixKeyAudit table in src/models/database_models.py with:
+- [x] T030 [US1] Implement SQLAlchemy PixKeyAudit table in src/models/database_models.py with:
   - Columns: audit_id, key_id, user_id, operation, timestamp, status, details (JSON)
   - FK(key_id → pix_keys.key_id)
   - Index: (user_id, timestamp desc)
 
 - [ ] T031 [US1] Create database migration in migrations/versions/ for PixKey and PixKeyAudit tables
-- [ ] T032 [P] [US1] Implement SQLAlchemy PixKeyRepository in src/repositories/sqlalchemy_pix_key_repository.py:
+- [x] T032 [P] [US1] Implement SQLAlchemy PixKeyRepository in src/repositories/sqlalchemy_pix_key_repository.py:
   - Methods: create(), get_by_id(), get_by_user_id(), get_all_for_user(), update_status(), delete()
   - Find by hash with duplicate check
   - Count by user to enforce max 5 limit
 
-- [ ] T033 [P] [US1] Implement SQLAlchemy PixKeyAuditRepository in src/repositories/sqlalchemy_pix_key_audit_repository.py:
+- [x] T033 [P] [US1] Implement SQLAlchemy PixKeyAuditRepository in src/repositories/sqlalchemy_pix_key_audit_repository.py:
   - Method: create_audit_log(key_id, user_id, operation, status, details)
   - Method: get_audit_trail_for_key(key_id)
 
 ### Use Case Implementation for User Story 1
 
-- [ ] T034 [US1] Implement RegisterPixKeyUseCase in src/use_cases/register_pix_key.py:
+- [x] T034 [US1] Implement RegisterPixKeyUseCase in src/use_cases/register_pix_key.py:
   - Input: user_id, key_type, key_value (optional), alias (optional)
   - Validate key format based on key_type
   - Check for duplicates via repository
