@@ -29,4 +29,4 @@ sqlalchemy-stubs
 
 # Utilities
 python-dotenv==1.0.0
-uuid6==1.0.3
+uuid6==2025.0.1
