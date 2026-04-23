@@ -92,7 +92,7 @@ description: "Task list for Pix Keys Management feature implementation"
   - Test random key generation
   - Test masking logic (email mask, CPF mask, phone mask)
 
-- [ ] T023 [P] [US1] Unit test: RegisterPixKeyUseCase in tests/unit/use_cases/test_register_pix_key_use_case.py
+- [x] T023 [P] [US1] Unit test: RegisterPixKeyUseCase in tests/unit/use_cases/test_register_pix_key_use_case.py
   - Test successful registration with valid CPF
   - Test successful registration with valid email
   - Test successful registration with valid phone
@@ -103,7 +103,7 @@ description: "Task list for Pix Keys Management feature implementation"
   - Test validation error on invalid email
   - Test validation error on invalid phone format
 
-- [ ] T024 [P] [US1] Contract test: POST /api/v1/pix-keys/register endpoint in tests/contract/test_register_pix_key_endpoint.py
+- [x] T024 [P] [US1] Contract test: POST /api/v1/pix-keys/register endpoint in tests/contract/test_register_pix_key_endpoint.py
   - Test 201 response on successful registration with result data
   - Test 400 response on invalid format
   - Test 409 response on duplicate key
@@ -111,7 +111,7 @@ description: "Task list for Pix Keys Management feature implementation"
   - Test 401 response on missing auth token
   - Test response structure (success, data, message fields)
 
-- [ ] T025 [P] [US1] Integration test: Full registration flow in tests/integration/test_register_pix_key_flow.py
+- [x] T025 [P] [US1] Integration test: Full registration flow in tests/integration/test_register_pix_key_flow.py
   - Test database persistence (key in DB after registration)
   - Test audit log creation (entry in pix_key_audits table)
   - Test JSON logging output format
@@ -172,8 +172,8 @@ description: "Task list for Pix Keys Management feature implementation"
 
 ### Controller & API Implementation for User Story 1
 
-- [ ] T035 [US1] Create FastAPI router in src/api/pix_keys_router.py
-- [ ] T036 [P] [US1] Implement POST /api/v1/pix-keys/register endpoint in src/api/pix_keys_router.py:
+- [x] T035 [US1] Create FastAPI router in src/api/pix_keys_router.py
+- [x] T036 [P] [US1] Implement POST /api/v1/pix-keys/register endpoint in src/api/pix_keys_router.py:
   - Route handler in PixKeyController
   - Extract user_id from auth middleware
   - Call RegisterPixKeyUseCase
@@ -183,7 +183,7 @@ description: "Task list for Pix Keys Management feature implementation"
 
 ### Integration & Documentation for User Story 1
 
-- [ ] T037 [US1] Register PixKeysRouter in main FastAPI app (src/main.py)
+- [x] T037 [US1] Register PixKeysRouter in main FastAPI app (src/main.py)
 - [ ] T038 [P] [US1] Add OpenAPI documentation annotations to register endpoint (docstring with examples)
 - [ ] T039 [US1] Run full test suite for US1 and verify 80%+ coverage for this story
 
