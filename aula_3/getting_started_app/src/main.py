@@ -44,7 +44,15 @@ def create_app() -> FastAPI:
     # Create database tables on startup
     @app.on_event("startup")
     def on_startup():
-        create_db_and_tables()
+        try:
+            create_db_and_tables()
+        except Exception as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.warning(
+                f"Could not initialize database: {e}. "
+                "API will still be available. Running with mock repository."
+            )
     
     # Health check endpoint
     @app.get("/health")
