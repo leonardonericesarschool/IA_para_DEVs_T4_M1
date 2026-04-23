@@ -1,0 +1,6 @@
+Flask
+flask-openapi3[swagger]
+pydantic
+email-validator
+SQLAlchemy
+python-dotenv
