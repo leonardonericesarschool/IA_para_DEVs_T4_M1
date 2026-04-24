@@ -1,5 +1,0 @@
-- [x] Estrutura de diretórios criada para projeto Flask
-- [x] README.md e licença MIT adicionados
-- [x] requirements.txt criado com dependências
-- [x] API REST implementada com dois endpoints (GET e POST) para validação de CPF
-- [X] Instalar dependências e testar execução

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Owner for Financial Services"
+  short_description: "Guide fintech product ownership work"
+  default_prompt: "Use $financial-services-product-owner to shape a compliant fintech product plan."
