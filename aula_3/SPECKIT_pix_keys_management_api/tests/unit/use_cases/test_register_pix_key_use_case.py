@@ -32,8 +32,21 @@ def mock_pix_key_repository():
     repo = AsyncMock(spec=PixKeyRepository)
     repo.get_by_hash = AsyncMock(return_value=None)  # No duplicates by default
     repo.count_for_user = AsyncMock(return_value=0)  # No existing keys by default
-    repo.create = AsyncMock()
-    repo.create.side_effect = lambda key: key  # Return the key passed in
+    
+    # Mock create to return a dict-like object
+    async def mock_create(**kwargs):
+        return {
+            "key_id": kwargs.get("key_id", uuid4()),
+            "user_id": kwargs.get("user_id"),
+            "key_type": kwargs.get("key_type"),
+            "key_value_hash": kwargs.get("key_value_hash"),
+            "key_value_masked": kwargs.get("key_value_masked"),
+            "alias": kwargs.get("alias"),
+            "status": "ACTIVE",
+            "validation_status": kwargs.get("validation_status"),
+        }
+    
+    repo.create = AsyncMock(side_effect=mock_create)
     return repo
 
 
@@ -50,7 +63,7 @@ def use_case(mock_pix_key_repository, mock_audit_repository):
     """Create a RegisterPixKeyUseCase with mocked dependencies."""
     return RegisterPixKeyUseCase(
         pix_key_repository=mock_pix_key_repository,
-        pix_key_audit_repository=mock_audit_repository,
+        audit_repository=mock_audit_repository,
     )
 
 
@@ -131,7 +144,7 @@ class TestRegisterPixKeyCPF:
                 key_value=cpf,
             )
 
-        assert "already exists" in str(exc_info.value).lower()
+        assert "already registered" in str(exc_info.value).lower()
 
 
 class TestRegisterPixKeyEmail:

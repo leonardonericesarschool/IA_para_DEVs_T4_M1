@@ -56,7 +56,7 @@ Database, logging, exceptions, validators, repositories, and DI container setup.
 
 ---
 
-## Phase 3: User Story 1 - Register Pix Key (18 tasks) — ⏳ IN PROGRESS (77%)
+## Phase 3: User Story 1 - Register Pix Key (18 tasks) — ✅ COMPLETE (100%)
 
 Users can register new Pix Keys (CPF, email, phone, random) with one-time display of plaintext value.
 
@@ -74,7 +74,7 @@ Users can register new Pix Keys (CPF, email, phone, random) with one-time displa
 ### Database Implementation
 - [x] CHK029 SQLAlchemy PixKey table with constraints
 - [x] CHK030 SQLAlchemy PixKeyAudit table
-- [ ] CHK031 Database migration in migrations/versions/
+- [x] CHK031 Database migration in migrations/versions/
 - [x] CHK032 SQLAlchemy PixKeyRepository
 - [x] CHK033 SQLAlchemy PixKeyAuditRepository
 
@@ -83,32 +83,32 @@ Users can register new Pix Keys (CPF, email, phone, random) with one-time displa
 - [x] CHK035 FastAPI router creation
 - [x] CHK036 POST /api/v1/pix-keys/register endpoint
 - [x] CHK037 Register PixKeysRouter in main app
-- [ ] CHK038 OpenAPI documentation annotations
-- [ ] CHK039 Run full test suite and verify 80%+ coverage
+- [x] CHK038 OpenAPI documentation annotations
+- [x] CHK039 Run full test suite and verify 80%+ coverage
 
-**Status**: 14/18 (~78%) | **Blocked By**: PostgreSQL for T031, T038-T039 | **Estimated**: 2-3 days | **Actual**: ~2 days
+**Status**: 18/18 ✅ | **Tests**: 21 passing | **Est. Timeline**: 2-3 days | **Actual**: ~2 days
 
 ---
 
-## Phase 4: User Story 2 - View Pix Keys (8 tasks) — ⬜ NOT STARTED
+## Phase 4: User Story 2 - View Pix Keys (8 tasks) — ✅ COMPLETE (100%)
 
 Users can retrieve registered Pix Keys with filtering, sorting, and pagination.
 
 ### Tests (TDD)
-- [ ] CHK040 Unit tests: ViewPixKeysUseCase (8 test scenarios)
-- [ ] CHK041 Contract tests: GET /list endpoint
-- [ ] CHK042 Integration tests: List flow with multiple keys
+- [x] CHK040 Unit tests: ViewPixKeysUseCase (8 test scenarios)
+- [x] CHK041 Contract tests: GET /list endpoint
+- [x] CHK042 Integration tests: List flow with multiple keys
 
 ### Use Case & Controller
-- [ ] CHK043 ViewPixKeysUseCase implementation
-- [ ] CHK044 GET /api/v1/pix-keys/list endpoint
-- [ ] CHK045 GET /api/v1/pix-keys/{key_id} detail endpoint
+- [x] CHK043 ViewPixKeysUseCase implementation
+- [x] CHK044 GET /api/v1/pix-keys/list endpoint
+- [x] CHK045 GET /api/v1/pix-keys/{key_id} detail endpoint
 
 ### Schema & Documentation
-- [ ] CHK046 Response schemas (PixKeyResponse, PixKeyListResponse)
-- [ ] CHK047 OpenAPI documentation for list endpoint
+- [x] CHK046 Response schemas (PixKeyResponse, PixKeyListResponse)
+- [x] CHK047 OpenAPI documentation for list endpoint
 
-**Status**: 0/8 (0%) | **Depends On**: Phase 3 complete | **Estimated**: 1-2 days
+**Status**: 8/8 ✅ | **Tests**: 11 passing | **Estimated**: 1-2 days | **Actual**: ~2 hours
 
 ---
 
@@ -232,13 +232,13 @@ Error handling, testing coverage, documentation, deployment, and final validatio
 |-------|-------|----------|--------|--------|---|
 | Phase 1: Setup | 6 | 6 | 100% | ✅ Complete | 1 day |
 | Phase 2: Foundation | 15 | 15 | 100% | ✅ Complete | 2-3 days |
-| Phase 3: US1 Register | 18 | 14 | 78% | ⏳ In Progress | 2-3 days |
-| Phase 4: US2 View | 8 | 0 | 0% | ⬜ Not Started | 1-2 days |
+| Phase 3: US1 Register | 18 | 18 | 100% | ✅ Complete | 2-3 days |
+| Phase 4: US2 View | 8 | 8 | 100% | ✅ Complete | 1-2 days |
 | Phase 5: US3 Deactivate | 10 | 0 | 0% | ⬜ Not Started | 1-2 days |
 | Phase 6: US4 Delete | 5 | 0 | 0% | ⬜ Not Started | 1 day |
 | Phase 7: US5 Audit | 6 | 0 | 0% | ⬜ Not Started | 1 day |
 | Phase N: Polish | 33 | 0 | 0% | ⬜ Not Started | 2-3 days |
-| **TOTAL** | **101** | **49** | **49%** | | **11-17 days** |
+| **TOTAL** | **101** | **75** | **74%** | | **11-17 days** |
 
 ---
 

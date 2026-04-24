@@ -71,9 +71,12 @@ class RegisterPixKeyUseCase:
         # Check for duplicates
         existing_key = await self.pix_key_repo.get_by_hash(user_id, key_hash)
         if existing_key:
+            # Handle both dict and object returns
+            key_id = existing_key.get("key_id") if isinstance(existing_key, dict) else existing_key.key_id
+            status = existing_key.get("status") if isinstance(existing_key, dict) else existing_key.status
             raise DuplicateKeyError(
-                key_id=existing_key.get("key_id"),
-                status=existing_key.get("status")
+                key_id=key_id,
+                status=status
             )
         
         # Check max keys limit

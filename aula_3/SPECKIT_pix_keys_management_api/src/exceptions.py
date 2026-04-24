@@ -89,6 +89,16 @@ class UnauthorizedError(ApplicationException):
         )
 
 
+class InvalidFilterError(ApplicationException):
+    """Invalid filter parameter provided"""
+    def __init__(self, message: str = "Invalid filter parameter"):
+        super().__init__(
+            message=message,
+            code="INVALID_FILTER",
+            status_code=400
+        )
+
+
 class InvalidStatusTransitionError(ApplicationException):
     """Invalid status state transition"""
     def __init__(self, current_status: str, attempted_status: str):
