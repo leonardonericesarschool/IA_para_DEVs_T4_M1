@@ -1,0 +1,18 @@
+# Framework Web
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.5
+
+# Database
+SQLAlchemy==2.0.23
+
+# Validation
+Pydantic==2.5.0
+
+# API Documentation
+Flasgger==0.9.7.1
+
+# Environment
+python-dotenv==1.0.0
+
+# Other utilities
+Werkzeug==2.3.7
